@@ -50,6 +50,16 @@ end
 
 All `execute` calls inside `up` or `down` run inside a transaction, and will be rolled back if an exception is raised.
 
+Migrating and rolling back is done executing
+
+    $ rake pg:migrations:migrate
+
+and
+
+    $ rake pg:migrations:rollback
+
+respectively.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jorgecsrmorais/pg-migrations.
