@@ -2,7 +2,7 @@
 
 This gem was built for those (like me) that don't want to use ActiveRecord and its overhead to handle model data retrieval and persistence but do like ActiveRecord's handling of database migrations.
 
-The gem implements a simple no-fuss handling of database migrations in Postgres, using only the pg gem but allowing versioning, migrating and rolling back in a way similar to ActiveRecord's.
+The gem implements a simple no-fuss handling of database migrations in Postgres, using only the `pg` gem but allowing versioning, migrating and rolling back in a way similar to ActiveRecord's.
 
 ## Installation
 
