@@ -24,7 +24,7 @@ namespace :pg do
 
       pg_connection = get_pg_connection()
       begin
-        Dir.glob('db/migrate/*.rb').each do |migration_file|
+        Dir.glob('db/migrate/*.rb').sort.each do |migration_file|
           version, class_name = get_migration_info(migration_file)
           next if version.nil?
           next if migration_ran?(pg_connection, version)
