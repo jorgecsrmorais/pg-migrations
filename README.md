@@ -50,7 +50,7 @@ end
 
 All `execute` calls inside `up` or `down` run inside a transaction, and will be rolled back if an exception is raised.
 
-If any of the migration commands have to be run outside of the transaction (ALTER TYPE, as an example) these should be put inside the 'up_without_transaction' and 'down_without_transaction' methods. These are chained to the normal 'up' and 'down' and are executed during migration and rollback.
+If any of the migration commands have to be run outside of the transaction (ALTER TYPE, as an example) these should be put inside the `up_without_transaction` and `down_without_transaction` methods. These are chained to the normal `up` and `down` and are executed during migration and rollback.
 
 Migrating and rolling back is done executing
 
