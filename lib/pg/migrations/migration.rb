@@ -6,6 +6,8 @@ module Pg
       def initialize(connection, version) ; @connection = connection ; @version = version ; end
       def up ; ; end
       def down ; ; end
+      def up_without_transaction ; ; end
+      def down_without_transaction ; ; end
 
       protected
 
@@ -15,8 +17,20 @@ module Pg
 
       private
 
-        def _up ; run_inside_transaction { up() ; add_version() } ; end
-        def _down ; run_inside_transaction { down() ; remove_version() } ; end
+        def _up
+          run_outside_transaction { up_without_transaction() }
+          run_inside_transaction { up() ; add_version() }
+        end
+        def _down
+          run_outside_transaction { down_without_transaction() }
+          run_inside_transaction { down() ; remove_version() }
+        end
+
+        def run_outside_transaction
+          @_c = @connection
+          yield
+          @_c = nil
+        end
 
         def run_inside_transaction
           @connection.transaction do |c|
